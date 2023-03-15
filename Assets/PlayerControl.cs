@@ -9,10 +9,14 @@ public class PlayerControl : MonoBehaviour
 
     float _horizontal;
     float _vertical;
+    //float _rotate;
     float _lastVelocity_Y;
 
     [SerializeField]
     float Speed = 2;
+
+    //[SerializeField]
+    //float RotationSpeed = 40;
 
     [SerializeField]
     float SprintSpeed = 8;
@@ -46,6 +50,7 @@ public class PlayerControl : MonoBehaviour
     {
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
+        //_rotate=Input.GetAxis("Rotate");
     }
 
     private void Move(float horizontal, float vertical)
@@ -54,6 +59,9 @@ public class PlayerControl : MonoBehaviour
         velocity.x = horizontal * Speed;
         velocity.y = GetVelocity_Y();
         velocity.z = vertical * Speed;
+
+        //Vector3 rotation = new Vector3(0.0f, _rotate, 0.0f);
+        //rb.AddTorque(rotation * RotationSpeed);
 
         if (Sprints() && IsGrounded())
         {
