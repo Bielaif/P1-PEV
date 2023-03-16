@@ -22,16 +22,16 @@ public class PlayerControl : MonoBehaviour
     float SprintSpeed = 8;
 
     [SerializeField]
-    float JumpSpeed = 2;
-
-    [SerializeField]
-    float JumpSprintSpeed = 8;
+    float JumpSpeed = 5;
 
     [SerializeField]
     Transform GroundChecker;
 
     [SerializeField]
     LayerMask WhatIsGround;
+
+    [SerializeField]
+    bool Isgrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +48,8 @@ public class PlayerControl : MonoBehaviour
 
     private void GetInputs()
     {
-        _horizontal = Input.GetAxis("Horizontal");
-        _vertical = Input.GetAxis("Vertical");
+        _horizontal = Input.GetAxisRaw("Horizontal");
+        _vertical = Input.GetAxisRaw("Vertical");
         //_rotate=Input.GetAxis("Rotate");
     }
 
@@ -63,17 +63,17 @@ public class PlayerControl : MonoBehaviour
         //Vector3 rotation = new Vector3(0.0f, _rotate, 0.0f);
         //rb.AddTorque(rotation * RotationSpeed);
 
-        if (Sprints() && IsGrounded())
+        if (Sprints())
         {
             velocity.x = horizontal * SprintSpeed;
             velocity.z = vertical * SprintSpeed;
         }
-
+        
         if (Jumps() && IsGrounded())
         {
             velocity.y += JumpSpeed;
         }
-        
+
         _characterController.Move(velocity * Time.deltaTime);
 
         _lastVelocity_Y = velocity.y;
@@ -81,8 +81,11 @@ public class PlayerControl : MonoBehaviour
         if (velocity.magnitude > 0)
         {
             velocity.y = 0;
-            Vector3 point = transform.position + velocity;
+            Vector3 target_point = transform.position + velocity;
+            Vector3 current_point = transform.position + transform.forward;
+            Vector3 point = Vector3.Lerp(current_point, target_point, 0.01f);
             transform.LookAt(point);
+            Isgrounded = false;
         }
 
 
@@ -95,7 +98,7 @@ public class PlayerControl : MonoBehaviour
 
     private bool Jumps()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetKey(KeyCode.Space);
 
     }
 
@@ -115,11 +118,8 @@ public class PlayerControl : MonoBehaviour
 
     bool IsGrounded()
     {
+        Isgrounded=true;
         return Physics.CheckSphere(GroundChecker.position, 0.15f, WhatIsGround);
-    }
-
-    private void Sprint() { 
-        
     }
 }
 

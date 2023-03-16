@@ -7,8 +7,6 @@ public class CharacterAnimation : MonoBehaviour
 {
     private Animator _animator;
 
-    private bool moving = false;
-    private bool running = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,31 +17,60 @@ public class CharacterAnimation : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && WASDPressed())
-        {
-            SetRunning();
-        }
-        else 
-        {
-            SetNotRunning();
-        }
-
         if (WASDPressed())
         {
-            SetMoving();
-        }
-        else
-        {
-            SetNotMoving();
-        }
-    }
+            SetNotDancing();
+            if (SpacePressed()){
+                SetJumping();
+            }
+            else
+            {
+                SetMoving();
+                if(Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    if (SpacePressed())
+                    {
+                        SetJumping();
+                    }
+                    else {
+                        SetRunning();
+                        SetNotJumping();
+                    }
+                } 
+                else if(Input.GetKeyUp(KeyCode.LeftShift))
+                {
+                    SetNotRunning();
+                }
+            }
+        } else if (IsStationary())
+            {
+            if (SpacePressed()) {
+                SetJumping();
+            }
+            else if (Input.GetKeyDown(KeyCode.G)){
+                SetDancing();
+            }
+            else if (Input.GetKeyUp(KeyCode.G))
+            {
+                SetNotDancing();
+            }
+            else 
+                {
+                    SetIdle();
+                }
+            }
+
+       
+    } 
+
+    
+
 
     private bool WASDPressed()
     {
         if (Input.GetAxis("Vertical") != 0)
         {
             return true;
-
         }
         else if (Input.GetAxis("Horizontal") != 0)
         {
@@ -55,24 +82,68 @@ public class CharacterAnimation : MonoBehaviour
         }
     }
 
+    private bool IsStationary()
+    {
+        if (Input.GetAxis("Vertical") == 0)
+        {
+            return true;
+
+        }
+        else if (Input.GetAxis("Horizontal") == 0)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
+    private bool SpacePressed(){
+        if (Input.GetKeyDown(KeyCode.Space)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    void SetIdle()
+    {
+        SetNotJumping();
+        SetNotMoving();
+        SetNotRunning();
+    }
+    void SetJumping(){
+        _animator.SetBool("IsJumping", true);
+    }
+
+    void SetNotJumping(){
+        _animator.SetBool("IsJumping", false);
+    }
+
     void SetMoving() 
     {
         _animator.SetBool("IsMoving", true);
-        moving = true;
     }
     void SetNotMoving()
     {
         _animator.SetBool("IsMoving", false);
-        moving = false;
     }
     void SetRunning()
     {
         _animator.SetBool("IsRunning", true);
-        running = true;
     }
     void SetNotRunning()
     {
         _animator.SetBool("IsRunning", false);
-        running = false;
     }
+    void SetDancing()
+    {
+        _animator.SetBool("IsDancing", true);
+    }
+    void SetNotDancing()
+    {
+        _animator.SetBool("IsDancing", false);
+    }
+
 }
