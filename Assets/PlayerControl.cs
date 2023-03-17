@@ -93,12 +93,26 @@ public class PlayerControl : MonoBehaviour
     //Detecta si el jugador clica shift
     private bool Sprints()
     {
-        return Input.GetKey(KeyCode.LeftShift);
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton10))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private bool Jumps()
     {
-        return Input.GetKey(KeyCode.Space);
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
     }
 

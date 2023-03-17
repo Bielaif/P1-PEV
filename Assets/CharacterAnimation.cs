@@ -26,7 +26,7 @@ public class CharacterAnimation : MonoBehaviour
             else
             {
                 SetMoving();
-                if(Input.GetKeyDown(KeyCode.LeftShift))
+                if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton10))
                 {
                     if (SpacePressed())
                     {
@@ -37,7 +37,7 @@ public class CharacterAnimation : MonoBehaviour
                         SetNotJumping();
                     }
                 } 
-                else if(Input.GetKeyUp(KeyCode.LeftShift))
+                else if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton10))
                 {
                     SetNotRunning();
                 }
@@ -47,10 +47,11 @@ public class CharacterAnimation : MonoBehaviour
             if (SpacePressed()) {
                 SetJumping();
             }
-            else if (Input.GetKeyDown(KeyCode.G)){
+            else if (Input.GetKeyDown(KeyCode.G) || Input.GetKey(KeyCode.JoystickButton1))
+            {
                 SetDancing();
             }
-            else if (Input.GetKeyUp(KeyCode.G))
+            else if (Input.GetKeyUp(KeyCode.G) || Input.GetKey(KeyCode.JoystickButton1))
             {
                 SetNotDancing();
             }
@@ -100,7 +101,8 @@ public class CharacterAnimation : MonoBehaviour
     }
 
     private bool SpacePressed(){
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
+        {
             return true;
         } else {
             return false;
