@@ -58,6 +58,9 @@
   <ItemGroup>
     <Compile Include="Assets\PlayerControl.cs" />
     <Compile Include="Assets\CharacterAnimation.cs" />
+    <Compile Include="Assets\OpenDoor.cs" />
+    <Compile Include="Assets\WindForce.cs" />
+    <Compile Include="Assets\LiftUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
