@@ -18,6 +18,7 @@ public class Jump : MonoBehaviour
 
     [SerializeField]
     bool Isgrounded;
+    
 
     // Update is called once per frame
     void Update()
@@ -37,6 +38,7 @@ public class Jump : MonoBehaviour
         }
 
         _lastVelocity_Y = velocity.y;
+        _characterController.Move(velocity * Time.deltaTime);
 
         if (velocity.magnitude > 0)
         {
