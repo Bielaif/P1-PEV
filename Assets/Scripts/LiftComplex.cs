@@ -11,6 +11,7 @@ public class LiftComplex : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PlayerControl Control = other.GetComponent<PlayerControl>();
+        //Es comprova si el personatge ha agafat la moneda
         if (Coin.moneda)
         {
             if (Control != null)
@@ -28,6 +29,7 @@ public class LiftComplex : MonoBehaviour
         }
     }
 
+    //Canvia les diferents animacions de l'ascensor
     private void SetFlight()
     {
         _animator.SetBool("Up", true);

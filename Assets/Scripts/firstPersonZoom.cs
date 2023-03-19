@@ -15,14 +15,13 @@ public class firstPersonZoom : MonoBehaviour
 
     private void Start()
     {
-        // Save the original field of view of the first person camera
         originalFov = firstPersonCamera.fieldOfView;
     }
 
 
     private void Update()
     {
-        // Zoom in when the "z" key is pressed
+        //Zoom in
         if (Input.GetKey(KeyCode.Z))
         {
             float newFov = Mathf.Clamp(firstPersonCamera.fieldOfView - zoomSpeed, minFov, maxFov);
@@ -30,7 +29,7 @@ public class firstPersonZoom : MonoBehaviour
         }
 
 
-        // Zoom out when the "x" key is pressed
+        //Zoom out
         if (Input.GetKey(KeyCode.X))
         {
             float newFov = Mathf.Clamp(firstPersonCamera.fieldOfView + zoomSpeed, minFov, maxFov);
@@ -38,7 +37,7 @@ public class firstPersonZoom : MonoBehaviour
         }
 
 
-        // Reset the field of view when neither the "z" nor the "x" key is pressed
+        //Reseteja el FOV
         if (!Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.X))
         {
             firstPersonCamera.fieldOfView = originalFov;

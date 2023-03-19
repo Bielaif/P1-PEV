@@ -8,11 +8,11 @@ public class PlayerControl : MonoBehaviour
 {
     CharacterController _characterController;
     Rigidbody rb;
+
    
     float _horizontal;
     float _vertical;
-   
-    float _lastVelocity_Y;
+
     float _lastVelocity_X;
     float _lastVelocity_Z;
 
@@ -42,10 +42,6 @@ public class PlayerControl : MonoBehaviour
 
 
     [SerializeField]
-    bool Isgrounded;
-
-
-    [SerializeField]
     private float Smoothing_Ground=0.1f;
     [SerializeField]
     private float Smoothing_Air = 0.0001f;
@@ -56,16 +52,6 @@ public class PlayerControl : MonoBehaviour
 
 
     public Camera currentCamera;
-    private Vector3 originalThirdPersonCameraPosition;
-    private float zoomDistance;
-    private float originalFirstPersonFov;
-    private float minFov = 10.0f;
-    private float maxFov = 60.0f;
-    private float zoomSpeed = 1.0f;
-
-
-   
-
 
     // Start is called before the first frame update
     void Start()
@@ -90,8 +76,6 @@ public class PlayerControl : MonoBehaviour
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
-         
-       
     }
 
 
@@ -103,31 +87,20 @@ public class PlayerControl : MonoBehaviour
         float targetVelocity_x = localInput.x * Speed;
         float targetVelocity_z = localInput.z * Speed;
 
-
+        //Per suavitzar el moviment
         float smoothing = IsGrounded() ? Smoothing_Ground : Smoothing_Air;
 
 
         Vector3 velocity = new Vector3(0, 0, 0);
         velocity.x = Mathf.Lerp(_lastVelocity_X, targetVelocity_x, smoothing);
-        velocity.y = GetVelocity_Y();
         velocity.z = Mathf.Lerp(_lastVelocity_Z, targetVelocity_z, smoothing);
 
 
-        // Scale the target velocities by sprint speed if player is sprinting
+        //Augmenta la velocitat del personatge si aquest sprinta
         if (Sprints())
         {
             velocity.x = localInput.x * SprintSpeed;
             velocity.z = localInput.z * SprintSpeed;
-
-
-            }
-
-
-        if (Jumps() && IsGrounded())
-        {
-            {
-                velocity.y += JumpSpeed;
-            }
         }
 
 
@@ -135,7 +108,6 @@ public class PlayerControl : MonoBehaviour
 
 
         _lastVelocity_X = velocity.x;
-        _lastVelocity_Y = velocity.y;
         _lastVelocity_Z = velocity.z;
 
 
@@ -154,13 +126,13 @@ public class PlayerControl : MonoBehaviour
 
     private void changeCamera()
     {
-        // Switch camera when the "C" key is pressed
-    if (Input.GetKeyDown(KeyCode.C) || Input.GetKey(KeyCode.JoystickButton1))
-    {
-        // Disable the current camera
+        //Mira si s'apreten els controls per fer el toggle de camera
+        if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.JoystickButton4))
+        {
+     
         currentCamera.enabled = false;
        
-        // Switch the current camera to the other camera
+        // Canvia la camara depenent de quina estigui fent servir
         if (currentCamera == firstPersonCamera)
         {
             currentCamera = thirdPersonCamera;
@@ -170,10 +142,9 @@ public class PlayerControl : MonoBehaviour
             currentCamera = firstPersonCamera;
         }
        
-        // Enable the new current camera
-        currentCamera.enabled = true;
+            currentCamera.enabled = true;
        
-    }
+        }
     }
    
    
@@ -182,7 +153,7 @@ public class PlayerControl : MonoBehaviour
     //Detecta si el jugador clica shift
     private bool Sprints()
     {
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton10))
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton2))
         {
             return true;
         }
@@ -191,45 +162,15 @@ public class PlayerControl : MonoBehaviour
             return false;
         }
     }
-
-
-    private bool Jumps()
-    {
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
-
-    }
-
-
-    private float GetVelocity_Y()
-    {
-        if (IsGrounded())
-        {
-            return 0;
-        }
-        float oldvelocity = _lastVelocity_Y;
-        float gravity = -9.81f;
-
-
-
-
-        float newVelocity = oldvelocity + gravity * Time.deltaTime;
-        return newVelocity;
-    }
-
 
     bool IsGrounded()
     {
-        Isgrounded=true;
         return Physics.CheckSphere(GroundChecker.position, 0.15f, WhatIsGround);
     }
+
+
+
+
 
 
 }

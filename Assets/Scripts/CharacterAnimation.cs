@@ -27,7 +27,7 @@ public class CharacterAnimation : MonoBehaviour
             else
             {
                 SetMoving();
-                if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton10))
+                if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton2))
                 {
                     if (SpacePressed())
                     {
@@ -38,7 +38,7 @@ public class CharacterAnimation : MonoBehaviour
                         SetNotJumping();
                     }
                 } 
-                else if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton10))
+                else if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKey(KeyCode.JoystickButton2))
                 {
                     SetNotRunning();
                 }
@@ -48,11 +48,11 @@ public class CharacterAnimation : MonoBehaviour
             if (SpacePressed()) {
                 SetJumping();
             }
-            else if (Input.GetKeyDown(KeyCode.G) || Input.GetKey(KeyCode.JoystickButton1))
+            else if (Input.GetKeyDown(KeyCode.G) || Input.GetKey(KeyCode.JoystickButton3))
             {
                 SetDancing();
             }
-            else if (Input.GetKeyUp(KeyCode.G) || Input.GetKey(KeyCode.JoystickButton1))
+            else if (Input.GetKeyUp(KeyCode.G) || Input.GetKey(KeyCode.JoystickButton3))
             {
                 SetNotDancing();
             }
@@ -67,7 +67,7 @@ public class CharacterAnimation : MonoBehaviour
 
     
 
-
+    //Mira si el personatge esta en moviment
     private bool WASDPressed()
     {
         if (Input.GetAxis("Vertical") != 0)
@@ -84,24 +84,13 @@ public class CharacterAnimation : MonoBehaviour
         }
     }
 
+    //Mira si el personatge esta quiet
     private bool IsStationary()
     {
         return Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0;
-        /* if (Input.GetAxis("Vertical") == 0)
-        {
-            return true;
-
-        }
-        else if (Input.GetAxis("Horizontal") == 0)
-        {
-            return true;
-        }
-        else 
-        {
-            return false;
-        } */
     }
 
+    //Comprova si s'utilitzen els botons de salt
     private bool SpacePressed(){
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
         {
@@ -111,6 +100,7 @@ public class CharacterAnimation : MonoBehaviour
         }
     }
 
+    //Activa o desactiva els estats de les animacions
     void SetIdle()
     {
         SetNotJumping();

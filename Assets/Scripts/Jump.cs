@@ -16,25 +16,23 @@ public class Jump : MonoBehaviour
     [SerializeField]
     LayerMask WhatIsGround;
 
-    [SerializeField]
-    bool Isgrounded;
-    
-
+  
     // Update is called once per frame
     void Update()
     {
         LetsJump();
     }
 
+
     private void LetsJump() 
     {
         Vector3 velocity = new Vector3(0, 0, 0);
         velocity.y = GetVelocity_Y();
 
+        //Comprova que toqui el terra i toqui els controls de salt
         if (Jumps() && IsGrounded())
         {
             velocity.y += JumpHeight;
-            Isgrounded = false;
         }
 
         _lastVelocity_Y = velocity.y;
@@ -50,6 +48,7 @@ public class Jump : MonoBehaviour
         }
     }
 
+    //Controla quan s'apreten els controls de saltar
     private bool Jumps()
     {
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
@@ -79,7 +78,6 @@ public class Jump : MonoBehaviour
 
     bool IsGrounded()
     {
-        Isgrounded = true;
         return Physics.CheckSphere(GroundChecker.position, 0.15f, WhatIsGround);
     }
 }

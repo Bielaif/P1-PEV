@@ -25,7 +25,7 @@ public class thirdPersonCamera : MonoBehaviour
         float currentAngle = transform.eulerAngles.y;
         float angle = Mathf.LerpAngle(currentAngle, targetAngle, smoothSpeed * Time.deltaTime);
 
-
+        //Quaternion ajuda amb les rotacions
         Quaternion rotation = Quaternion.Euler(0, angle, 0);
         Vector3 targetPosition = target.position - (rotation * Vector3.forward * distance);
         targetPosition.y = target.position.y + height;

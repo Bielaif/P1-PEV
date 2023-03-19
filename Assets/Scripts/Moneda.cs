@@ -7,6 +7,7 @@ public class Moneda : MonoBehaviour
     
     public bool moneda = false;
 
+    //Al fer contacte amb la moneda la borra
     private void OnTriggerEnter(Collider other)
     {
         PlayerControl Control = other.GetComponent<PlayerControl>();
@@ -14,6 +15,7 @@ public class Moneda : MonoBehaviour
         KillMyself();
     }
 
+    //S'amaga el mesh de la moneda
     private void KillMyself()
     {
         MeshRenderer mr = this.GetComponent<MeshRenderer>();
