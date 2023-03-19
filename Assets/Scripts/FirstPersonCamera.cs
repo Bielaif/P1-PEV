@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class FirstPersonCamera : MonoBehaviour
 {
+    public PlayerControl PlayerControl;
 
     [SerializeField]
     private float sensitivityY;
     [SerializeField]
     private float sensitivityX;
 
-    Camera cam;
+    public Camera cam;
 
     float mouseX;
     float mouseY;
@@ -20,15 +21,21 @@ public class FirstPersonCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam=GetComponentInChildren<Camera>();
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        MyInput();
-        cam.transform.localRotation = Quaternion.Euler(xRotation,0,0);
-        transform.rotation = Quaternion.Euler(0, yRotation, 0);   
+        cam = PlayerControl.currentCamera;
+        if (cam == PlayerControl.firstPersonCamera)
+        {
+            MyInput();
+            cam.transform.localRotation = Quaternion.Euler(xRotation,0,0);
+            transform.rotation = Quaternion.Euler(0, yRotation, 0); 
+        }
+          
     }
     
     void MyInput()

@@ -21,6 +21,7 @@ public class CharacterAnimation : MonoBehaviour
         {
             SetNotDancing();
             if (SpacePressed()){
+                
                 SetJumping();
             }
             else
@@ -85,7 +86,8 @@ public class CharacterAnimation : MonoBehaviour
 
     private bool IsStationary()
     {
-        if (Input.GetAxis("Vertical") == 0)
+        return Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0;
+        /* if (Input.GetAxis("Vertical") == 0)
         {
             return true;
 
@@ -97,11 +99,11 @@ public class CharacterAnimation : MonoBehaviour
         else 
         {
             return false;
-        }
+        } */
     }
 
     private bool SpacePressed(){
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
         {
             return true;
         } else {

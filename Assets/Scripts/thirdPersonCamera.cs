@@ -15,7 +15,7 @@ public class thirdPersonCamera : MonoBehaviour
 
     private void Start()
     {
-        _offset = transform.position - target.position;
+        //_offset = transform.position - target.position;
     }
 
 
@@ -31,7 +31,7 @@ public class thirdPersonCamera : MonoBehaviour
         targetPosition.y = target.position.y + height;
 
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
+        transform.position = targetPosition;
         transform.LookAt(target);
     }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 561081895}
   - component: {fileID: 561081897}
   - component: {fileID: 561081898}
-  - component: {fileID: 561081900}
+  - component: {fileID: 561081899}
   m_Layer: 0
   m_Name: CharacterParent
   m_TagString: Control
@@ -974,6 +974,7 @@ MonoBehaviour:
   Smoothing_Air: 0.0001
   firstPersonCamera: {fileID: 1219098898}
   thirdPersonCamera: {fileID: 1783164497}
+  currentCamera: {fileID: 0}
 --- !u!114 &561081897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,7 +1023,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &561081900
+--- !u!114 &561081899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1034,8 +1035,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a165a8da25b5843b5d673cd341eb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivityY: 250
-  sensitivityX: 250
+  PlayerControl: {fileID: 561081896}
+  sensitivityY: 200
+  sensitivityX: 200
+  cam: {fileID: 0}
 --- !u!1 &588914173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,9 +2349,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7982302181041549612, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6544207043104339812, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5844656388794437976, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5711052370896006010, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4742519388939285313, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2616897377538054657, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
       propertyPath: m_Name
       value: Moli
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879070364656932655, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3870524464034688282, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049823086242842778, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493627762690555508, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528679341821255818, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012588796350406346, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62e1ea6005e1b39419ab63e4e460affd, type: 3}
@@ -2467,7 +2522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thirdPersonCamera: {fileID: 1783164497}
-  minFov: 10
+  minFov: 20
   maxFov: 30
   zoomSpeed: 10
 --- !u!1 &1908815331

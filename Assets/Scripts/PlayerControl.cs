@@ -55,7 +55,7 @@ public class PlayerControl : MonoBehaviour
     public Camera thirdPersonCamera;
 
 
-    private Camera currentCamera;
+    public Camera currentCamera;
     private Vector3 originalThirdPersonCameraPosition;
     private float zoomDistance;
     private float originalFirstPersonFov;
