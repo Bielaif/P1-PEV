@@ -2,37 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Interfaces;
 
 public class Cane : Weapon
 {
-    
-
-    private bool _isAttacking;
 
     [SerializeField]
     private float AttackDelay;
-
+    [SerializeField]
+    private float Damage;
     [SerializeField]
     private DealDamage _DamageDealer;
 
-    [SerializeField]
-    private float Damage;
+    private bool _isAttacking;
 
-    [SerializeField]
-    private float KnockBackForce;
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        
-
     }
     private void Update()
     {
- 
-        if (WeaponType.Cane == CurrentWeaponType)
+        Weapon tempWT = gameObject.GetComponentInParent<Weapon>();
+        if (WeaponType.Cane == tempWT.CurrentWeaponType)
             StateCheck();
-
-        Debug.Log(CurrentWeaponType);
     }
 
     private void StateCheck()
@@ -44,11 +36,12 @@ public class Cane : Weapon
 
     public override void OnAttack(InputValue value)
     {
-        if (WeaponType.Cane == CurrentWeaponType)
+        Weapon tempWT = gameObject.GetComponentInParent<Weapon>();
+        if (WeaponType.Cane == tempWT.CurrentWeaponType)
         {
-        if (_isAttacking) return;
-        StartCoroutine("Hit");
-        _animator.SetTrigger("Attack");
+         _animator.SetTrigger("Attack");
+         StartCoroutine("Hit");
+        
         }
 
     }

@@ -355,6 +355,7 @@
 "Assets/Scripts/Combate/Cane.cs"
 "Assets/Scripts/Combate/CombatScript.cs"
 "Assets/Scripts/Combate/DealDamage.cs"
+"Assets/Scripts/Combate/IkHandler.cs"
 "Assets/Scripts/Combate/Pistol.cs"
 "Assets/Scripts/Combate/Weapon.cs"
 "Assets/Scripts/Enemies/chaseEnemy.cs"

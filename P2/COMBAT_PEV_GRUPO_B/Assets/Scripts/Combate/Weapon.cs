@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,24 @@ using UnityEngine.InputSystem;
 
 public class Weapon : MonoBehaviour
 {
+    
     protected Animator _animator;
-    protected WeaponType CurrentWeaponType;
+    public WeaponType CurrentWeaponType;
+
+    [SerializeField]
+    private GameObject Cuerpo;
+
+    [SerializeField]
+    private GameObject WeapCane;
+
+    [SerializeField]
+    private GameObject WeapPistol;
 
     private void Update()
     {
         Swap();
         Debug.Log(CurrentWeaponType);
+        
     }
     public virtual void OnAttack(InputValue value)
     {
@@ -24,7 +36,19 @@ public class Weapon : MonoBehaviour
             CurrentWeaponType = WeaponType.Cane;
         if (Input.GetKeyDown(KeyCode.Alpha2))
             CurrentWeaponType = WeaponType.Pistol;
+        ChangeWeapon();
     }
-    protected enum WeaponType { Cane, Pistol };
+
+    private void ChangeWeapon()
+    {
+        WeapCane.SetActive(false);
+        WeapPistol.SetActive(false);
+        if (CurrentWeaponType == WeaponType.Cane)
+        WeapCane.SetActive(true);
+        if (CurrentWeaponType == WeaponType.Pistol)
+        WeapPistol.SetActive(true);
+    }
+
+    public enum WeaponType { Cane, Pistol };
 
 }

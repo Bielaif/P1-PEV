@@ -66,15 +66,16 @@
     <Compile Include="Assets\Scripts\HealthBarBysense.cs" />
     <Compile Include="Assets\Scripts\HealthSystem.cs" />
     <Compile Include="Assets\Scripts\PlayerRoll.cs" />
+    <Compile Include="Assets\Scripts\Combate\Cane.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ITakeDamage.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyDmg.cs" />
     <Compile Include="Assets\Scripts\Enemies\chaseEnemy.cs" />
     <Compile Include="Assets\DamageButton.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\Combate\DealDamage.cs" />
     <Compile Include="Assets\Scripts\Combate\Weapon.cs" />
     <Compile Include="Assets\Scripts\Combate\Pistol.cs" />
-    <Compile Include="Assets\Scripts\Combate\Cane.cs" />
+    <Compile Include="Assets\Scripts\Combate\DealDamage.cs" />
+    <Compile Include="Assets\Scripts\Combate\IkHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
