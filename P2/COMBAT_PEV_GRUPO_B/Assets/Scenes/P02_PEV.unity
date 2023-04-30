@@ -12927,6 +12927,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6065764638338438584, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
+      propertyPath: _slider
+      value: 
+      objectReference: {fileID: 1424086497}
     - target: {fileID: 6174431856939249268, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
       propertyPath: m_Name
       value: EsqueletoShield
@@ -13008,14 +13012,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 831514774}
     - target: {fileID: 6837640316251043028, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837640316251043028, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
       propertyPath: deathPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 579523235}
+    - target: {fileID: 6837640316251043028, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 1424086497}
     - target: {fileID: 6837640316251043028, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
       propertyPath: _healthSlider
       value: 
       objectReference: {fileID: 1424086497}
-    m_RemovedComponents: []
+    - target: {fileID: 6837640316251043031, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6065764638338438584, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
 --- !u!1001 &1589056672
 PrefabInstance:
@@ -15409,10 +15426,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b9962729c466d428751489b1a56353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 0
-  _isAlive: 0
-  _healthSlider: {fileID: 1878954655}
+  maxHealth: 100
+  currentHealth: 0
+  isPlayer: 0
+  healthSlider: {fileID: 1878954655}
   deathPanel: {fileID: 579523235}
 --- !u!114 &1904823931
 MonoBehaviour:
@@ -15428,6 +15445,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageKey: 9
   damageAmount: 10
+  healthSystem: {fileID: 0}
+  dealDamage: {fileID: 0}
 --- !u!114 &1904823932
 MonoBehaviour:
   m_ObjectHideFlags: 0

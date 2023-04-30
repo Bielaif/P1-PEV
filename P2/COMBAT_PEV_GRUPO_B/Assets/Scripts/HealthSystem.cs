@@ -6,20 +6,19 @@ using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour, ITakeDamage
 {
-    [SerializeField] public float _maxHealth = 100f;
-    //[SerializeField] private float _knockbackStrenght = 10f;
-    public float _currentHealth;
-    public bool _isAlive;
-    [SerializeField] private Slider _healthSlider;
+    [SerializeField] public float maxHealth = 100f;
+    public float currentHealth;
+    public bool isPlayer = false;
+    [SerializeField] private Slider healthSlider;
     [SerializeField] private GameObject deathPanel;
-
-    public float MaxHealth { get { return _maxHealth; } }
+    private bool isTakingDamage = false;
+    
+    public float MaxHealth { get { return maxHealth; } }
 
     private void Start()
     {
-        _currentHealth = _maxHealth;
-        _isAlive = true;
-        //_healthSlider = GetComponentInChildren<Slider>();
+        currentHealth = maxHealth;
+        healthSlider.value = 1f;
     }
 
     public delegate void OnHit(float healthFraction);
@@ -28,23 +27,20 @@ public class HealthSystem : MonoBehaviour, ITakeDamage
     private void UpdateHealthBar()
     {
         // calculate health fraction
-        float healthFraction = _currentHealth / _maxHealth;
-
-        // set fill amount of health bar
-        //_healthBarFill.fillAmount = healthFraction;
+        float healthFraction = currentHealth / maxHealth;
 
         // set value of slider
-        if (_healthSlider != null)
+        if (!isTakingDamage && healthSlider != null)
         {
-            _healthSlider.value = healthFraction;
+            healthSlider.value = healthFraction;
         }
     }
 
-
     public void TakeDamage(float damageAmount)
     {
+        Debug.Log("TakeDamage function called");
         // subtract damage from current health
-        _currentHealth -= damageAmount;
+        currentHealth -= damageAmount;
 
         // update health bar
         UpdateHealthBar();
@@ -52,38 +48,56 @@ public class HealthSystem : MonoBehaviour, ITakeDamage
         // invoke OnHit delegate
         if (onHit != null)
         {
-            onHit(_currentHealth / _maxHealth);
+            onHit(currentHealth / maxHealth);
         }
 
         // check if health is zero or below
-        if (_currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            _isAlive = false;
-            deathPanel.SetActive(true);
-
-
+            if (isPlayer)
+            {
+                // Player death logic
+                Debug.Log("Player has died!");
+                deathPanel.SetActive(true);
+            }
+            else
+            {
+                // Enemy death logic
+                Debug.Log("Enemy has died!");
+                gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            StartCoroutine(TakeDamageDelay());
         }
     }
 
+    private IEnumerator TakeDamageDelay()
+    {
+        isTakingDamage = true;
+        yield return new WaitForSeconds(0.5f);
+        isTakingDamage = false;
+    }
 
     public void Heal(float healAmount)
     {
-     
-        if (_isAlive && _currentHealth < _maxHealth)
+        if (currentHealth < maxHealth)
         {
-            _currentHealth = Mathf.Min(_currentHealth + healAmount, _maxHealth);
+            currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
             UpdateHealthBar();
-            Debug.Log($"Enemy have {_currentHealth}");
         }
-       
 
-        if (!_isAlive && deathPanel.activeSelf)
+        if (deathPanel.activeSelf)
         {
             deathPanel.SetActive(false);
-            _isAlive = true;
+            currentHealth = maxHealth;
+            gameObject.SetActive(true);
         }
     }
 }
+
+
 
 
 
