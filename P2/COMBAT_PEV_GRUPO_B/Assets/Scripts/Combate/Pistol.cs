@@ -39,16 +39,4 @@ public class Pistol : Weapon
         }
 
     }
-
-    [SerializeField]
-    Transform RightHandTarget;
-
-    [SerializeField]
-    [Range(0, 1)]
-    float Weight;
-    private void OnAnimatorIK(int layerIndex)
-    {
-        _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, Weight);
-        _animator.SetIKPosition(AvatarIKGoal.RightHand, RightHandTarget.position);
-    }
 }

@@ -74,8 +74,8 @@
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Combate\Weapon.cs" />
     <Compile Include="Assets\Scripts\Combate\Pistol.cs" />
-    <Compile Include="Assets\Scripts\Combate\DealDamage.cs" />
     <Compile Include="Assets\Scripts\Combate\IkHandler.cs" />
+    <Compile Include="Assets\Scripts\Combate\DealDamage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
