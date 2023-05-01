@@ -13340,131 +13340,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5282990777577770182, guid: 494154042312b91478a550e5ba11a94b, type: 3}
   m_PrefabInstance: {fileID: 1290434918}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
---- !u!1001 &1586984993
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6065764636336932215, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6065764636336932215, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6065764638338438584, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: _slider
-      value: 
-      objectReference: {fileID: 1424086497}
-    - target: {fileID: 6174431856939249268, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_Name
-      value: EsqueletoShield
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.033
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043022, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043024, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 101212329}
-    - target: {fileID: 6837640316251043024, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 1904823918}
-    - target: {fileID: 6837640316251043024, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: castPoint
-      value: 
-      objectReference: {fileID: 1890955163}
-    - target: {fileID: 6837640316251043025, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1904823918}
-    - target: {fileID: 6837640316251043027, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 101212329}
-    - target: {fileID: 6837640316251043027, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: patrolPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 2147425060}
-    - target: {fileID: 6837640316251043027, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: patrolPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 2048338046}
-    - target: {fileID: 6837640316251043027, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: patrolPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 831514774}
-    - target: {fileID: 6837640316251043028, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: maxHealth
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6837640316251043028, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: deathPanel
-      value: 
-      objectReference: {fileID: 579523235}
-    - target: {fileID: 6837640316251043028, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 1424086497}
-    - target: {fileID: 6837640316251043028, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: _healthSlider
-      value: 
-      objectReference: {fileID: 1424086497}
-    - target: {fileID: 6837640316251043031, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6065764638338438584, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 52e0dde00b5ca40468ceb2a43c7cc8e4, type: 3}
-=======
->>>>>>> 5bd6c5d7b28d23201107b610ff59be600575d329
 --- !u!1001 &1589056672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15966,10 +15841,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b9962729c466d428751489b1a56353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  isPlayer: 0
-  healthSlider: {fileID: 1878954655}
+  _maxHealth: 100
+  _currentHealth: 0
+  _isAlive: 0
+  _healthSlider: {fileID: 1878954655}
   deathPanel: {fileID: 579523235}
 --- !u!114 &1904823931
 MonoBehaviour:
@@ -15985,8 +15860,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageKey: 9
   damageAmount: 10
-  healthSystem: {fileID: 0}
-  dealDamage: {fileID: 0}
 --- !u!114 &1904823932
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,38 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    private Slider _slider;
     private HealthSystem _healthSystem;
 
-    [SerializeField]
-    private Slider _slider;
-
-    void Start()
+    private void Start()
     {
-        _healthSystem = GetComponent<HealthSystem>();
-        if (_healthSystem == null)
-        {
-            Debug.LogError("No se ha encontrado el componente HealthSystem en este objeto o en su padre.");
-        }
-        else
-        {
-            _healthSystem.onHit += UpdateEnemyHealthBar;
-            _slider.value = _healthSystem.currentHealth / _healthSystem.maxHealth;
-        }
+        _slider = GetComponent<Slider>();
+        _healthSystem = GetComponentInParent<HealthSystem>();
+        _healthSystem.onHit += OnHit;
+        _slider.maxValue = _healthSystem.MaxHealth;
+        _slider.value = _slider.maxValue;
     }
 
-
-    private void UpdateEnemyHealthBar(float healthFraction)
+    private void OnHit(float healthFraction)
     {
-        // update the value of the slider to reflect the new health fraction
-        _slider.value = _healthSystem.currentHealth;
-
-        // optional: you can add an animation to the slider if you want
-        // e.g. using a Tween library like DOTween
-        // DOTween.To(() => _healthBarSlider.value, x => _healthBarSlider.value = x, _healthSystem.CurrentHealth, 0.5f);
+        _slider.value = _healthSystem._currentHealth;
     }
 }
+
 
 
 
