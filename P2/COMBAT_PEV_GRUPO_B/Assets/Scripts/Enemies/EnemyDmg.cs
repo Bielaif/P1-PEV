@@ -1,26 +1,37 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using Interfaces;
 using UnityEngine;
 
 public class EnemyDmg : MonoBehaviour
 {
-    public List<ITakeDamage> Damageables { get; } = new();
+    [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
+    private float attackDuration = 1.5f;
+
+    private bool isAttacking = false;
+    private float attackTimer = 0f;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (isAttacking)
         {
-            Attack(20f);
+            attackTimer += Time.deltaTime;
+
+            if (attackTimer >= attackDuration)
+            {
+                isAttacking = false;
+                attackTimer = 0f;
+            }
         }
+
+        animator.SetBool("isAttacking", isAttacking);
     }
 
-    public void Attack(float damageAmount)
+    public void StartAttack()
     {
-        foreach (var damageable in Damageables)
-        {
-            damageable.TakeDamage(damageAmount);
-        }
+        isAttacking = true;
     }
 }
 

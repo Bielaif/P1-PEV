@@ -45,6 +45,7 @@
      <Compile Include="Assets\Scripts\Enemies\visionDetection.cs" />
      <Compile Include="Assets\Scripts\HealthSystem.cs" />
      <Compile Include="Assets\Scripts\PlayerRoll.cs" />
+     <Compile Include="Assets\Scripts\HealDamage.cs" />
      <Compile Include="Assets\Scripts\Combate\BulletGun.cs" />
      <Compile Include="Assets\Scripts\Combate\Cane.cs" />
      <Compile Include="Assets\Scripts\Interfaces\ITakeDamage.cs" />
@@ -62,7 +63,6 @@
      <Compile Include="Assets\Scripts\Combate\IkHandler.cs" />
      <Compile Include="Assets\Scripts\Combate\DealDamage.cs" />
      <Compile Include="Assets\Scripts\Spawn\SpawnStart.cs" />
-     <Compile Include="Assets\Scripts\HealDamage.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

@@ -38,6 +38,19 @@ public class visionDetection : MonoBehaviour
                     if (!isBlocked())
                     {
                         timeOutOfVision = 0f;
+
+                        // Agrega la funcionalidad de ataque si el jugador está cerca
+                        if (Vector3.Distance(transform.position, _player.position) < 2f)
+                        {
+                            anim.SetBool("isAttacking", true);
+                            anim.SetBool("isChasing", false);
+                            
+                        }
+                        else
+                        {
+                            anim.SetBool("isAttacking", false);
+                            anim.SetBool("isChasing", true);
+                        }
                     }
                 }
                 else
@@ -119,5 +132,3 @@ public class visionDetection : MonoBehaviour
     }
 
 }
-
-

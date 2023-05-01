@@ -11,10 +11,11 @@ public class HealDamage : MonoBehaviour
     {
         var health = other.GetComponent<HealthSystem>();
 
-        if (health != null)
+        if (health != null && health._currentHealth < health._maxHealth)
         {
             health.Heal(_healAmount);
             Destroy(gameObject);
         }
     }
+
 }
