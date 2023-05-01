@@ -60,7 +60,7 @@ public class SpawnerParam : MonoBehaviour
 
     private bool ShouldSpawn() 
     {
-        return Input.GetKeyDown(KeyCode.Alpha1);
+        return Input.GetKeyDown(KeyCode.G);
     }
 }
 

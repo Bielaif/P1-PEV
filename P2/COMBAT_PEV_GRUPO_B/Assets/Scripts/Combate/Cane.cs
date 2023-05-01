@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Interfaces;
 
-public class Cane : Weapon
+public class Cane : MonoBehaviour
 {
 
     [SerializeField]
@@ -14,34 +14,20 @@ public class Cane : Weapon
     [SerializeField]
     private DealDamage _DamageDealer;
 
+    private Animator _animator;
     private bool _isAttacking;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _isAttacking = false;
     }
-    private void Update()
+    private void OnAttack(InputValue value)
     {
-        Weapon tempWT = gameObject.GetComponentInParent<Weapon>();
-        if (WeaponType.Cane == tempWT.CurrentWeaponType)
-            StateCheck();
-    }
-
-    private void StateCheck()
-    {
-        _animator.SetLayerWeight(1, 0);
-        _animator.SetBool("WithPistol", false);
-        _animator.SetBool("WithCane", true);
-    }
-
-    public override void OnAttack(InputValue value)
-    {
-        Weapon tempWT = gameObject.GetComponentInParent<Weapon>();
-        if (WeaponType.Cane == tempWT.CurrentWeaponType)
+        if (_animator.GetBool("WithCane") == true)
         {
          _animator.SetTrigger("Attack");
-         StartCoroutine("Hit");
-        
+         StartCoroutine("Hit");     
         }
 
     }

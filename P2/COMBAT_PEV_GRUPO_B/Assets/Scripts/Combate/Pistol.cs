@@ -3,40 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Pistol : Weapon
+public class Pistol : MonoBehaviour
 {
-    [SerializeField]
-    protected GameObject BulletPrefab;
     [SerializeField]
     protected Transform FirePoint;
     [SerializeField]
-    protected float FireSpeed = 2;
-    private void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }
-    private void Update()
-    {
-        Weapon tempWT = gameObject.GetComponentInParent<Weapon>();
-        if (WeaponType.Pistol == tempWT.CurrentWeaponType)
-            StateCheck();
-    }
+    protected float CoolDownTime;
 
-    private void StateCheck()
+    protected float _lastShootTime;
+    protected Animator _animator;
+    public virtual void OnAttack(InputValue value)
     {
-        _animator.SetLayerWeight(1, 1);
-        _animator.SetBool("WithCane", false);
-        _animator.SetBool("WithPistol", true);
+        TryShoot();
     }
-
-    public override void OnAttack(InputValue value)
+    protected bool CanShoot()
     {
-        Weapon tempWT = gameObject.GetComponentInParent<Weapon>();
-        if (WeaponType.Pistol == tempWT.CurrentWeaponType) 
-        { 
-        GameObject go = Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
-        go.GetComponent<Rigidbody>().velocity = go.transform.right * FireSpeed;
-        }
-
+        return (_lastShootTime + CoolDownTime) <= Time.time;
+    }
+    protected void TryShoot()
+    {
+        if (CanShoot())
+            Shoot();
+        _lastShootTime = Time.deltaTime;
+    }
+    public virtual void Shoot()
+    {
+        
     }
 }
