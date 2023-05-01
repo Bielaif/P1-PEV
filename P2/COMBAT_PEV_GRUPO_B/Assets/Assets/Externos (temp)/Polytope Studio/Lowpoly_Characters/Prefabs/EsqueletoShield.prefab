@@ -2539,6 +2539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da2925814905cd43b764a179e2e8d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthSystem: {fileID: 0}
+  _healthBarSlider: {fileID: 0}
 --- !u!1 &6174431856939249268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,6 +2557,8 @@ GameObject:
   - component: {fileID: 6837640316251043027}
   - component: {fileID: 6837640316251043024}
   - component: {fileID: 6837640316251043025}
+  - component: {fileID: 697630250177009652}
+  - component: {fileID: 3675810389908920908}
   m_Layer: 8
   m_Name: EsqueletoShield
   m_TagString: Untagged
@@ -2610,8 +2614,6 @@ MonoBehaviour:
   _maxHealth: 50
   _currentHealth: 0
   _isAlive: 1
-  _healthSlider: {fileID: 0}
-  deathPanel: {fileID: 0}
 --- !u!54 &6837640316251043029
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2701,6 +2703,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speed: 6
+--- !u!114 &697630250177009652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174431856939249268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feec927424e37a348a25b598d618a5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 6837640316251043026}
+  attackdelay: 0.1
+  damage: 10
+--- !u!65 &3675810389908920908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174431856939249268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.92, z: 1}
+  m_Center: {x: 0, y: 0.97, z: 0.64}
 --- !u!1 &6244126996087743694
 GameObject:
   m_ObjectHideFlags: 0

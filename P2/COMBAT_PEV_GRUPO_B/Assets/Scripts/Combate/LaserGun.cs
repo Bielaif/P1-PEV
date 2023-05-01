@@ -27,7 +27,7 @@ public class LaserGun : Pistol
     public override void OnAttack(InputValue value)
     {
 
-        if (_animator.GetBool("WithLaser") == true && _animator.GetBool("InAnimamtion") == false)
+        if (_animator.GetBool("WithLaser") == true && _animator.GetBool("InAnimation") == false)
             TryShoot();
     }
 

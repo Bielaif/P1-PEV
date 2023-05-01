@@ -24,7 +24,6 @@ public class WeaponSwap : MonoBehaviour
     private void Update()
     {
         Swap();
-        Debug.Log(CurrentWeaponType);
         
     }
 

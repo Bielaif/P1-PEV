@@ -1,37 +1,53 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Interfaces;
 
 public class EnemyDmg : MonoBehaviour
 {
     [SerializeField]
-    private Animator animator;
+    private Animator _animator;
 
     [SerializeField]
-    private float attackDuration = 1.5f;
+    private float attackdelay = 1.5f;
 
-    private bool isAttacking = false;
+    [SerializeField]
+    private float damage;
+
     private float attackTimer = 0f;
+    private bool DealDamage;
 
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
     private void Update()
     {
-        if (isAttacking)
+        if (_animator.GetBool("Attack"))
         {
-            attackTimer += Time.deltaTime;
+            AttackTime();
+        }
+    }
+    private void AttackTime()
+    {
+        attackTimer += Time.deltaTime;
+        if (attackTimer >= attackdelay)
+        {
+            DealDamage = true;
+        }
+    }
 
-            if (attackTimer >= attackDuration)
-            {
-                isAttacking = false;
-                attackTimer = 0f;
-            }
+    public void OnTriggerEnter(Collider other)
+    {
+        var damageReciever = other.GetComponent<ITakeDamage>();
+        if (damageReciever != null && DealDamage)
+        {
+            damageReciever.TakeDamage(damage);
+            DealDamage = false;
         }
 
-        animator.SetBool("isAttacking", isAttacking);
-    }
-
-    public void StartAttack()
-    {
-        isAttacking = true;
     }
 }
+
 
