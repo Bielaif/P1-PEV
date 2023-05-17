@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1891827ba61530b4ebe36f27293aa8ef, type: 3}
+  m_Name: Bienvenida
+  m_EditorClassIdentifier: 
+  Speech: Que pasa maquinas
+  sprite: {fileID: 21300000, guid: abddbb0af2029ec4cb347fb9d0b13c17, type: 3}
+  Options:
+  - Text: "\xBFQue sensaciones deja la carrera?"
+    NextNode: {fileID: 11400000, guid: 05799257984b1984999a07d964cde93e, type: 2}
+  - Text: "\xBFQue opinas de estar a 33 puntos de Max?"
+    NextNode: {fileID: 11400000, guid: f516dda9270438a42beb1215d738d5ef, type: 2}
+  - Text: "\xBFAun estamos en la lucha del mundial?"
+    NextNode: {fileID: 11400000, guid: 7c672874ed6f19346a85c7fda45919c1, type: 2}
+  - Text: "\xBFQue tal se ha comporttado el AMR23?"
+    NextNode: {fileID: 11400000, guid: d6128ef62fefdcb4ea99d4e9c07c05c5, type: 2}
